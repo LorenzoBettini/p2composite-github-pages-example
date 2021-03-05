@@ -8,6 +8,12 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <scm>
+    <connection>scm:git:https://github.com/LorenzoBettini/p2composite-github-pages-example.git</connection>
+    <developerConnection>scm:git:git@github.com:LorenzoBettini/p2composite-github-pages-example.git</developerConnection>
+    <url>https://github.com/LorenzoBettini/p2composite-github-pages-example</url>
+  </scm>
+
   <modules>
     <module>../p2composite.example.plugin</module>
     <module>../p2composite.example.feature</module>
@@ -30,6 +36,16 @@
   </repositories>
 
   <build>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-plugin</artifactId>
+          <version>1.11.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
 
     <plugins>
       <plugin>
