@@ -125,6 +125,70 @@
               </execution>
             </executions>
           </plugin>
+          <plugin>
+            <groupId>org.eclipse.tycho.extras</groupId>
+            <artifactId>tycho-eclipserun-plugin</artifactId>
+            <configuration>
+              <repositories>
+                <repository>
+                  <id>oxygen</id>
+                  <layout>p2</layout>
+                  <url>http://download.eclipse.org/releases/oxygen</url>
+                </repository>
+              </repositories>
+              <dependencies>
+                <dependency>
+                  <artifactId>org.eclipse.ant.core</artifactId>
+                  <type>eclipse-plugin</type>
+                </dependency>
+                <dependency>
+                  <artifactId>org.apache.ant</artifactId>
+                  <type>eclipse-plugin</type>
+                </dependency>
+                <dependency>
+                  <artifactId>org.eclipse.equinox.p2.repository.tools</artifactId>
+                  <type>eclipse-plugin</type>
+                </dependency>
+                <dependency>
+                  <artifactId>org.eclipse.equinox.p2.core.feature</artifactId>
+                  <type>eclipse-feature</type>
+                </dependency>
+                <dependency>
+                  <artifactId>org.eclipse.equinox.p2.extras.feature</artifactId>
+                  <type>eclipse-feature</type>
+                </dependency>
+                <dependency>
+                  <artifactId>org.eclipse.equinox.ds</artifactId>
+                  <type>eclipse-plugin</type>
+                </dependency>
+              </dependencies>
+            </configuration>
+            <executions>
+              <!-- add our new child repository -->
+              <execution>
+                <id>add-p2-composite-repository</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>eclipse-run</goal>
+                </goals>
+                <configuration>
+                  <applicationsArgs>
+                    <args>-application</args>
+                    <args>org.eclipse.ant.core.antRunner</args>
+                    <args>-buildfile</args>
+                    <args>packaging-p2composite.ant</args>
+                    <args>p2.composite.add</args>
+                    <args>-Dsite.label="${site.label}"</args>
+                    <args>-Dcomposite.base.dir=${github-local-clone}</args>
+                    <args>-DunqualifiedVersion=${unqualifiedVersion}</args>
+                    <args>-DbuildQualifier=${buildQualifier}</args>
+                    <args>-DparsedVersion.majorVersion=${parsedVersion.majorVersion}</args>
+                    <args>-DparsedVersion.minorVersion=${parsedVersion.minorVersion}</args>
+                  </applicationsArgs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
       </build>
     </profile>

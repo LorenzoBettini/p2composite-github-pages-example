@@ -30,7 +30,9 @@
     <github-update-repo>git@github.com:LorenzoBettini/p2composite-github-pages-example-updates.git</github-update-repo>
     <github-local-clone>${project.build.directory}/checkout</github-local-clone>
     <releases-directory>${github-local-clone}/releases</releases-directory>
-    <current-release-directory>${releases-directory}/${project.artifactId}-${qualifiedVersion}</current-release-directory>
+    <current-release-directory>${releases-directory}/${qualifiedVersion}</current-release-directory>
+    <!-- The label for the Composite sites -->
+    <site.label>Example Site</site.label>
   </properties>
 
   <repositories>
@@ -64,6 +66,11 @@
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
           <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho.extras</groupId>
+          <artifactId>tycho-eclipserun-plugin</artifactId>
+          <version>${tycho-version}</version>
         </plugin>
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
