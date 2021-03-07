@@ -25,6 +25,9 @@
     <tycho-extras-version>${tycho-version}</tycho-extras-version>
     <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+    <github-update-repo>git@github.com:LorenzoBettini/p2composite-github-pages-example-updates.git</github-update-repo>
+    <github-local-clone>${project.build.directory}/checkout</github-local-clone>
   </properties>
 
   <repositories>
@@ -43,6 +46,11 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-scm-plugin</artifactId>
           <version>1.11.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.0.0</version>
         </plugin>
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
