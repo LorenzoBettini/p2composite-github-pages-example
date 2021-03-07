@@ -64,6 +64,23 @@
         <plugins>
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <executions>
+              <!-- sets the following properties that we use in our Ant scripts
+                parsedVersion.majorVersion
+                parsedVersion.minorVersion
+                bound by default to the validate phase
+              -->
+              <execution>
+                <id>parse-version</id>
+                <goals>
+                  <goal>parse-version</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <configuration>
               <executable>git</executable>
@@ -84,6 +101,26 @@
                     <argument>${github-update-repo}</argument>
                     <argument>${github-local-clone}</argument>
                   </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>copy-repository</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${current-release-directory}</outputDirectory>
+                  <resources>
+                    <resource>
+                      <directory>${project.build.directory}/repository</directory>
+                    </resource>
+                  </resources>
                 </configuration>
               </execution>
             </executions>
