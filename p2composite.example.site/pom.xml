@@ -87,7 +87,7 @@
             </configuration>
             <executions>
               <execution>
-                <id>clone</id>
+                <id>git-clone</id>
                 <phase>prepare-package</phase>
                 <goals>
                   <goal>exec</goal>
@@ -100,6 +100,53 @@
                     <argument>master</argument>
                     <argument>${github-update-repo}</argument>
                     <argument>${github-local-clone}</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>git-add</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <arguments>
+                    <argument>-C</argument>
+                    <argument>${github-local-clone}</argument>
+                    <argument>add</argument>
+                    <argument>-A</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>git-commit</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <arguments>
+                    <argument>-C</argument>
+                    <argument>${github-local-clone}</argument>
+                    <argument>commit</argument>
+                    <argument>-m</argument>
+                    <argument>Release ${qualifiedVersion}</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>git-push</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <arguments>
+                    <argument>-C</argument>
+                    <argument>${github-local-clone}</argument>
+                    <argument>push</argument>
+                    <argument>origin</argument>
+                    <argument>master</argument>
                   </arguments>
                 </configuration>
               </execution>
