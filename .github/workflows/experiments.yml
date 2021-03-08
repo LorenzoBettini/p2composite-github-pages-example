@@ -11,9 +11,12 @@ jobs:
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
+      with:
+        path: code
     - name: Checkout updates repo
       uses: actions/checkout@v2
       with:
+        path: repo
         repository: LorenzoBettini/p2composite-github-pages-example-updates
     - name: Set up JDK 11
       uses: actions/setup-java@v1
@@ -24,12 +27,12 @@ jobs:
     - name: Tree
       run: tree
     - name: Modify a file
-      run: date +%s > p2composite-github-pages-example-updates/report.txt
+      run: date +%s > repo/report.txt
     - name: Commit
       run: |
-        git -C p2composite-github-pages-example-updates add -A
-        git -C p2composite-github-pages-example-updates commit -am "Automated report"
-        git -C p2composite-github-pages-example-updates push origin master
+        git -C repo add -A
+        git -C repo commit -am "Automated report"
+        git -C repo push origin master
 #       git config --global user.name 'GitHub Actions'
 #       git config --global user.email 'lorenzo.bettini@users.noreply.github.com'
 #       git -C p2composite-github-pages-example-updates remote set-url --push origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
