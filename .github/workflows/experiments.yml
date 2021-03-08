@@ -22,6 +22,8 @@ jobs:
       run: date +%s > p2composite-github-pages-example-updates/report.txt
     - name: Commit
       run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'lorenzo.bettini@users.noreply.github.com'
         git -C p2composite-github-pages-example-updates add -A
         git -C p2composite-github-pages-example-updates commit -am "Automated report"
         git -C p2composite-github-pages-example-updates push
