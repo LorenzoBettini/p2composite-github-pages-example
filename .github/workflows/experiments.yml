@@ -15,6 +15,13 @@ jobs:
       with:
         java-version: 11
     - name: Clone
-      run: git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
+      run: git clone --depth=1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
     - name: Tree
       run: tree
+    - name: Modify a file
+      run: date +%s > p2composite-github-pages-example-updates/report.txt
+    - name: Commit
+      run: |
+        git -C p2composite-github-pages-example-updates add -A
+        git -C p2composite-github-pages-example-updates commit -am "Automated report"
+        git -C p2composite-github-pages-example-updates push
