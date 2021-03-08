@@ -27,4 +27,4 @@ jobs:
         git -C p2composite-github-pages-example-updates remote set-url --push origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
         git -C p2composite-github-pages-example-updates add -A
         git -C p2composite-github-pages-example-updates commit -am "Automated report"
-        git -C p2composite-github-pages-example-updates push
+        git -C p2composite-github-pages-example-updates push origin master
