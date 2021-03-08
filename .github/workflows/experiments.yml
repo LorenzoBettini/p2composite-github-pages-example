@@ -30,10 +30,9 @@ jobs:
       run: date +%s > repo/report.txt
     - name: Commit
       run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'lorenzo.bettini@users.noreply.github.com'
         git -C repo add -A
         git -C repo commit -am "Automated report"
         git -C repo push origin master
-#       git config --global user.name 'GitHub Actions'
-#       git config --global user.email 'lorenzo.bettini@users.noreply.github.com'
-#       git -C p2composite-github-pages-example-updates remote set-url --push origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
-        
+#        git -C p2composite-github-pages-example-updates remote set-url --push origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
