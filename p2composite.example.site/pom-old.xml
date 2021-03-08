@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<relativePath>../p2composite.example.tycho/pom.xml</relativePath>
+		<relativePath>../p2composite.example.parent/pom.xml</relativePath>
 		<groupId>p2composite.example</groupId>
-		<artifactId>p2composite.example.tycho</artifactId>
+		<artifactId>p2composite.example.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
