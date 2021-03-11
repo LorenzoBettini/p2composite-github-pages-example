@@ -1,0 +1,40 @@
+name: Experiments with Git
+
+on:
+  push:
+    branches:
+      - experiments
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout main repo
+      uses: actions/checkout@v2
+#      with:
+#        path: code
+#    - name: Checkout updates repo
+#     uses: actions/checkout@v2
+#      with:
+#        path: repo
+#        token: ${{ secrets.ACTIONS_TOKEN }}
+#        repository: LorenzoBettini/p2composite-github-pages-example-updates
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Clone
+      run: git clone --depth=1 https://x-access-token:${{ secrets.ACTIONS_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates repo
+    - name: Tree
+      run: tree
+    - name: Modify a file
+      run: date +%s > repo/report.txt
+    - name: Commit
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'lorenzo.bettini@users.noreply.github.com'
+        git -C repo add -A
+        git -C repo commit -am "Automated report"
+        git -C repo push origin master
+#        git -C p2composite-github-pages-example-updates remote set-url --push origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
