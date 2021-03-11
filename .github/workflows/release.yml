@@ -1,7 +1,9 @@
-name: Java CI with Maven
+name: Release with Maven
 
 on:
   push:
+    branches:
+      - release
   pull_request:
 
 jobs:

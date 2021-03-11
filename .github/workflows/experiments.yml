@@ -1,7 +1,9 @@
-name: Java CI with Maven
+name: Experiments with Git
 
 on:
   push:
+    branches:
+      - experiments
   pull_request:
 
 jobs:
