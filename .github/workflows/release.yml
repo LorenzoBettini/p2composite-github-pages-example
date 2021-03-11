@@ -27,6 +27,9 @@ jobs:
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'lorenzo.bettini@users.noreply.github.com'
     - name: Build with Maven
-      run: mvn deploy -Prelease-composite -Dgithub-update-repo=https://x-access-token:${{ secrets.ACTIONS_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
+      run: >
+        mvn deploy
+        -Prelease-composite
+        -Dgithub-update-repo=https://x-access-token:${{ secrets.ACTIONS_TOKEN }}@github.com/LorenzoBettini/p2composite-github-pages-example-updates
       working-directory: p2composite.example.parent
 
