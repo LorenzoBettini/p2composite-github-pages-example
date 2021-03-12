@@ -19,20 +19,20 @@
 	│   ├── 1.1.0.v20210307-2104 ...
 	│   └── 2.0.0.v20210308-1304 ...
 	└── updates
-	    ├── 1
-	    │   ├── 1.0
+	    ├── 1.x
+	    │   ├── 1.0.x
 	    │   │   ├── compositeArtifacts.xml
 	    │   │   ├── compositeContent.xml
 	    │   │   └── p2.index
-	    │   ├── 1.1
+	    │   ├── 1.1.x
 	    │   │   ├── compositeArtifacts.xml
 	    │   │   ├── compositeContent.xml
 	    │   │   └── p2.index
 	    │   ├── compositeArtifacts.xml
 	    │   ├── compositeContent.xml
 	    │   └── p2.index
-	    └── 2
-	        ├── 2.0
+	    └── 2.x
+	        ├── 2.0.x
 	        │   ├── compositeArtifacts.xml
 	        │   ├── compositeContent.xml
 	        │   └── p2.index
