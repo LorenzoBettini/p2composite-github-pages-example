@@ -52,6 +52,8 @@
 		composite.base.dir				The directory of the main composite (default "target")
 		updates.path					The directory of composite children
 										default is "updates"
+		updates.suffix					The suffix to append to updates versions directories
+										(default ".x", e.g., "1.x", "2.1.x")
 		releases.path.prefix			The path prefix to access the actual p2 releases repo from the
 										composite updates repo, e.g., if the directory of composite children
 										is "updates" and the releases main directory is "releases"
@@ -61,12 +63,13 @@
 	<target name="compute.child.repository.data">
 		<property name="full.version" value="${unqualifiedVersion}.${buildQualifier}" />
 
+		<property name="updates.suffix" value=".x"/>
 		<property name="main.site.composite.name"
 			value="${site.label} All Versions" />
 		<property name="child1.site.composite.name"
-			value="${site.label} ${parsedVersion.majorVersion}" />
+			value="${site.label} ${parsedVersion.majorVersion}${updates.suffix}" />
 		<property name="child2.site.composite.name"
-			value="${site.label} ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}" />
+			value="${site.label} ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}${updates.suffix}" />
 
 		<!-- composite.base.dir	The base directory for the local composite metadata,
 			e.g., from Maven, ${project.build.directory}
@@ -75,14 +78,15 @@
 		<property name="updates.path" value="updates"/>
 		<property name="releases.path.prefix" value="../../../releases"/>
 
+
 		<property name="main.site.composite.directory"
 			location="${composite.base.dir}" />
 		<property name="child1.site.composite.path"
-			value="${updates.path}/${parsedVersion.majorVersion}" />
+			value="${updates.path}/${parsedVersion.majorVersion}${updates.suffix}" />
 		<property name="child1.site.composite.directory"
 			location="${composite.base.dir}/${child1.site.composite.path}" />
 		<property name="child2.site.composite.path"
-			value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}" />
+			value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}${updates.suffix}" />
 		<property name="child2.site.composite.directory"
 			location="${composite.base.dir}/${child1.site.composite.path}/${child2.site.composite.path}" />
 
