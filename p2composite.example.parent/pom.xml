@@ -221,7 +221,7 @@
 
   <profiles>
     <profile>
-      <!-- Activate this profile to perform the release to Bintray -->
+      <!-- Activate this profile to perform the release to GitHub Pages -->
       <id>release-composite</id>
       <activation>
         <activeByDefault>false</activeByDefault>
