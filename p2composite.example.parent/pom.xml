@@ -24,7 +24,6 @@
     <tycho-version>4.0.2</tycho-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <eclipse-version>2023-06</eclipse-version>
-    <branch-name>master</branch-name>
 
     <!-- Required properties for releasing -->
     <github-update-repo>git@github.com:LorenzoBettini/p2composite-github-pages-example-updates.git</github-update-repo>
@@ -33,6 +32,8 @@
     <current-release-directory>${releases-directory}/${qualifiedVersion}</current-release-directory>
     <!-- The label for the Composite sites -->
     <site.label>Composite Site Example</site.label>
+	<!-- git branch name: master/main/??? -->
+    <branch-name>master</branch-name>
   </properties>
 
   <repositories>
