@@ -16,7 +16,7 @@
 
   <build>
     <plugins>
-      <!-- make sure that zipped p2 repositories have the fully qualified 
+      <!-- make sure that zipped p2 repositories have the fully qualified
         version -->
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
@@ -74,7 +74,7 @@
                     <argument>clone</argument>
                     <argument>--depth=1</argument>
                     <argument>-b</argument>
-                    <argument>master</argument>
+                    <argument>${branch-name}</argument>
                     <argument>${github-update-repo}</argument>
                     <argument>${github-local-clone}</argument>
                   </arguments>
@@ -123,7 +123,7 @@
                     <argument>${github-local-clone}</argument>
                     <argument>push</argument>
                     <argument>origin</argument>
-                    <argument>master</argument>
+                    <argument>${branch-name}</argument>
                   </arguments>
                 </configuration>
               </execution>
